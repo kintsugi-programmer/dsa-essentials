@@ -49,6 +49,12 @@ cout<<endl;
     cout<<endl;
     cout<<(7&4)<<(7|4)<<(7^4)<<(~4)<<(5<<2)<<(16>>2);
 
+    int x=10;
+    float y=x;
+
+    float x11=0.14;
+    int y11= (int)x11;
+
 
     
 
