@@ -20,6 +20,6 @@ int main(){
         long long smax2=(x-v1[n])*2;
         cout<< max(smax,smax2)<<endl;
         // cout<< smax<<" "<<v1[n-1]<<" "<<smax2<<endl;
-
+ 
     }return 0;
 }
