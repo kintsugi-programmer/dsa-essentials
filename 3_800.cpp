@@ -21,14 +21,12 @@ int main(){
             {
                 sum++;
                 dot++;
-
             }
             else if (s[i]=='#' & sum!=3)
             {
                 sum=0;
             }
             i++;
-
         }
 
         if (sum>=3)
