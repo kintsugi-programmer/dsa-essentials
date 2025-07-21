@@ -1,62 +1,83 @@
+// Arrays
+// Linear Data Structure
+// stores data in contiguous memory
+// allow random access via index
 
-// you can run c codes in c++
-// comments
-/* Multiline comments*/
-
-// standard input output library 
 #include<stdio.h>
 
-// main function ,where program execution starts , will stop at return 0, compiler will understand that its end of source code
 int main(){
+    // 1d Arrays
+    // initiation and declaration
+    int a[10] = {0,10,0,0,0,0,0,0,0,0};
 
-    // printf , prints stuff 
-    int x = 10;
-    printf("%d\n",x);// \n means new line/linebreak //10
-    // now %d is format specifier for integer 
-    // ie print the int format of value stored of var x
+    // print one value of array
+    printf("%d\n",a[1]); //10
+    // here we didn't write &a[1] because array a and its access through index itself is a pointer
 
-    // pointers are vars which store address
-    int *ptr = &x; // *ptr is way to show value of pointer,not some normal variable, its pointer variable;
-    printf("%p\n",ptr); // 0x7fffca3143ec address of value of var x in memory in hexadecimal
-    printf("%p\n",&x);    // &x means address of variable x // 0x7fffca3143ec 
-    // %p is format specifier of pointer var
-    printf("%d\n",*ptr); // *ptr means value of ptr //10
+    // print address of array
+    printf("%p\n",a); //0x7fff40de8740
+    // print address
 
-    // pointer to arrays
-    int arr[3] = {1,2,3};
-    int *p = &arr[0]; // or arr, as array access are too pointers ( when arrays used in expressions, arr decays to a pointer to its first element)
-    // &arr     // pointer to entire array (type: int (*)[3])
-    // arr      // pointer to first element (type: int *)
-
-    printf("%d\n",*p); //1
-    p++; // value of ptr increased, it jumps to next element of array
-    printf("%d\n",*p); //2
-    *p = 100; // Modifying a via pointer
-    printf("%d\n",*p); //100
-    p--;
-
-
-    printf("size of array: %d, size of one element of array: %d\n",sizeof(arr), sizeof(arr[0]) ); //size of array: 12, size of one element of array: 4
-    int length = sizeof(arr) / sizeof(arr[0]);// lenght of array
-    printf("length of array: %d\n",length); // length of array: 3
-
-    // access array through pointer
-    for ( int i=0; i<length; i++){
-        printf("%d {%lu}\t",*(p+i),(unsigned long)*(p+i)); // \t tab space, of 4 " "(spaces)
-        // 1       100     3
+    // array traversal
+    int A[4] = {100, 101, 102, 103};
+    for (int i = 0; i < 4; i++) {
+        printf("A[%d] = %d\n", i, A[i]);
+        /*
+        A[0] = 100
+        A[1] = 101
+        A[2] = 102
+        A[3] = 103*/
     }
-    printf("\n");
-    for ( int i=0; i<length; i++){
-        printf("%d {%p}\t",*(p+i),*(p+i)); // \t tab space, of 4 " "(spaces)
-        // 1       100     3
+
+    // Location/ Memory address of element in array
+    // Location = Base + ( Index * Size of each element of array ) - Starting Index
+    // Don't Remember these, Derive this
+    int base = (int)A; // address of A typcast into integer
+    printf("%d\n",base); //1088325424
+    // Starting index is 0
+    int startingIndex = 0;
+
+    int length_of_array = (sizeof(A)/sizeof(A[0]));
+    int size_of_each_element = sizeof(A[0]);
+    for (int index; index<length_of_array;index++){
+        int Location = base + (index*size_of_each_element) - startingIndex;
+        printf("A[%d] Location = %d\n",A[index],Location);
+        // A[100] Location = 1088325424
+        // A[101] Location = 1088325428
+        // A[102] Location = 1088325432
+        // A[103] Location = 1088325436
+        // notice the gap in b/w locations = 4 = size of each element in array = size of integer
+
     }
-    printf("\n");
+    // now we saw stuff in decimal but inside the computer , computer stores everything in binary and do binary arithmatics , not decimal normal arithmatics
+
+    // 2D Arrays 
+    int A3[2][3] =
+    {
+        {00,01,02},
+        {10,11,12}
+    };
+
+    // Access
+    printf("%d\n",A3[1][2]); //12
+
+    // Traversal
+    int i2,j2;
+    for (i2=0;i2<2;i2++){
+        for (j2=0;j2<3;j2++){
+            printf("A3[%d][%d]=%d\n",i2,j2,A3[i2][j2]);
+        }
+    }
+
+    // 2D Arrays Conceptual Representation != Physical Representation 
+    // They can't just put in memory as it is as it would lead to loss of random access as it breaks rule of contiguous arrangement of elements
+    // We have to convert 2D => 1D( with some convention for us to access )
+
+
+    // Row Major Order, Data Organisation 
+    // { {row1},{row2},}
+
     
-
-
-
-
-    
-    return 0; // this will stop the main func, compiler will understand that its end of source code
+    return 0;
 
 }

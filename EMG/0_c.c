@@ -6,6 +6,17 @@
 // standard input output library 
 #include<stdio.h>
 
+int isCommon(int a[], int b[], int na, int nb); // Function Declaration Prototype
+int isCommon(int a[],int b[],int na,int nb){ // Fuction ,only executed when called
+    int i,j;
+    for (i=0;i<na;i++){
+        for (j=0;j<nb;j++){
+            if (a[i]==b[j]){return 1;}
+        }
+    }return 0;
+
+
+}
 // main function ,where program execution starts , will stop at return 0, compiler will understand that its end of source code
 int main(){
 
@@ -46,6 +57,10 @@ int main(){
         // 1       100     3
     }
     printf("\n");
+
+    // break , terminate its enclosing for loop
+    // return , terminate its enclosing function
+    // continue , skip its statements below it and go to increment/decreament in loop
 
     return 0; // this will stop the main func, compiler will understand that its end of source code
 
